@@ -1,7 +1,7 @@
 export const ImageData = [
   {
     time: "Morning",
-    img: "https://wallpapercave.com/wp/wp6222676.jpg",
+    img: "https://media.wallpaperchill.com/1080x2400-wallpapers/good-morning-nature-wallpaper.jpg",
   },
   {
     time: "Afternoon",

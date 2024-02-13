@@ -12,6 +12,7 @@ import * as Location from "expo-location";
 import { ImageData } from "./ImageData";
 // import { useFonts } from "expo-font";
 // import { AppLoading } from "expo";
+import axios from "axios";
 
 const LocationData = () => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -25,7 +26,7 @@ const LocationData = () => {
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     getLocationAsync();
-    setTimeout(() => setRefreshing(false), 1000); // Simulating a delay for refresh indicator
+    setTimeout(() => setRefreshing(false), 1000);
   }, []);
 
   //   const [fontsLoaded, fontError] = useFonts({
@@ -62,13 +63,12 @@ const LocationData = () => {
 
       // Fetch temperature using OpenWeatherMap API
       const apiKey = "dcff5853c024b853d778ec7ad5ec71aa";
-      const response = await fetch(
+      const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&units=metric&appid=${apiKey}`
       );
-      const data = await response.json();
 
       // Extract temperature from API response
-      setTemperature(data.main.temp);
+      setTemperature(response.data.main.temp);
 
       // Determine time of day
       const currentHour = new Date().getHours();
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   overlay: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.8)", // Adjust opacity as needed
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     height: "30%",
     width: "75%",
     borderRadius: 20,
