@@ -11,20 +11,34 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nitish0844.weatherapplication"
     },
     "android": {
+      "buildType": "apk",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.nitish0844.weatherapplication"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/LibreBaskerville-Bold.ttf"]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "787f3010-4171-4c6d-b511-15b4004d2ebe"
+      }
     }
   }
 }
